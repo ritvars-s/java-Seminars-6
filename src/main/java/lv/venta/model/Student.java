@@ -24,13 +24,6 @@ import lombok.ToString;
 @ToString
 public class Student extends Person{
 	
-	@Setter(value = AccessLevel.NONE) // negrib lai lomboks taisa setteri tiesi id
-	@Column(name= "Sid")
-	@Id //primary key
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long sid;
-	
-	
 	//savienots ar grade klasi
 	@OneToMany(mappedBy = "student")
 	@ToString.Exclude

@@ -1,17 +1,27 @@
 package lv.venta.model;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
 import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-//no sis klases neveidosies tabula datubaze (parasti ja netaisa objektu no siss klases vai avstractam modelu klasem)
-
+//2. ja no bazes klases bus ari repo
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Table(name = "PersonTable")
+@Entity
 @MappedSuperclass // nevajag lietot @Table un @Entity tikai @column pie mainigajiem
 @Getter
 @Setter
@@ -19,6 +29,13 @@ import lombok.ToString;
 @ToString
 public class Person {
 
+	@Setter(value = AccessLevel.NONE)
+	@Column(name= "Pid")
+	@Id //primary key
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long pid;
+	
+	
 	@NotNull
 	@NotEmpty
 	@Pattern(regexp = "[A-Z]{1}[a-z]{2,20}")

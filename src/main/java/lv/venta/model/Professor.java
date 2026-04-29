@@ -27,13 +27,6 @@ import lv.venta.model.enums.Degree;
 @ToString
 public class Professor extends Person{
 	
-	@Setter(value = AccessLevel.NONE) // negrib lai lomboks taisa setteri tiesi id
-	@Column(name= "Pid")
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long pid;
-	
-
 	@Column(name = "Degree")
 	@NotNull
 	@Enumerated(EnumType.STRING)
