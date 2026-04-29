@@ -7,6 +7,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -48,6 +49,14 @@ public class Professor {
 	@NotNull
 	@Enumerated(EnumType.STRING)
 	private Degree degree;
+	
+	//mapped by ir ar mainigo jasasaista
+	@OneToOne(mappedBy = "professor")
+	@ToString.Exclude
+	//@JsonIgnore , tad ja izmanto citu orijsgakssustenu pimeram React Vue Angulat Utt.
+	private Course course;
+	
+	
 	
 	public Professor(String newName, String newSurname, Degree newDegree) {
 		setName(newName);

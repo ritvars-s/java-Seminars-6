@@ -1,16 +1,15 @@
 package lv.venta.model;
 
-import java.util.ArrayList;
-import java.util.Collection;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -20,43 +19,45 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Table(name = "StudentTable") //tabula un tas nosaukums
+@Table(name = "CourseTable")
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @ToString
-public class Student {
+public class Course {
 	
 	@Setter(value = AccessLevel.NONE) // negrib lai lomboks taisa setteri tiesi id
-	@Column(name= "Sid")
-	@Id //primary key
+	@Column(name= "Cid")
+	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long sid;
+	private long cid;
 	
-	@Column(name = "Name")
+	@Column(name = "Title")
 	@NotNull
 	@NotEmpty
-	@Pattern(regexp = "[A-Z]{1}[a-z]{2,20}")//todo var uzlabot
-	private String name;
-	@Column(name = "Surname")
-	@NotNull
-	@NotEmpty
-	@Pattern(regexp = "[A-Z]{1}[a-z]{2,20}")
-	private String surname;
+	@Pattern(regexp = "[A-Z]{1}[A-Za-z0-9]{1,40}")
+	private String title;
 	
+	@Column(name = "CP")
+	@Min(1)
+	@Max(30)
+	private int cp;
+	//=======
 	
-	//savienots ar grade klasi
-	@OneToMany(mappedBy = "student")
+	@OneToOne
+	// join coluumn ir ar id no otras klases 
+	@JoinColumn(name = "Pid")
+	private Professor professor;
+	
+	@OneToOne(mappedBy = "course")
 	@ToString.Exclude
-	private Collection<Grade> grades = new ArrayList<Grade>();
+	private Grade grade;
 	
 	
-	
-	public Student(String newName, String newSurname) {
-		setName(newName);
-		setSurname(newSurname);
+	public Course(String newTitle, int newCp, Professor newProfessor) {
+		setTitle(newTitle);
+		setCp(newCp);
+		setProfessor(newProfessor);
 	}
-	
-	
 }
