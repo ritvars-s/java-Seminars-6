@@ -25,7 +25,7 @@ import lv.venta.model.enums.Degree;
 @Setter
 @NoArgsConstructor
 @ToString
-public class Professor {
+public class Professor extends Person{
 	
 	@Setter(value = AccessLevel.NONE) // negrib lai lomboks taisa setteri tiesi id
 	@Column(name= "Pid")
@@ -33,18 +33,7 @@ public class Professor {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long pid;
 	
-	@Column(name = "Name")
-	@NotNull
-	@NotEmpty
-	@Pattern(regexp = "[A-Z]{1}[a-z]{2,20}")
-	private String name;
-	
-	@Column(name = "Surname")
-	@NotNull
-	@NotEmpty
-	@Pattern(regexp = "[A-Z]{1}[a-z]{2,20}")
-	private String surname;
-	
+
 	@Column(name = "Degree")
 	@NotNull
 	@Enumerated(EnumType.STRING)
@@ -59,8 +48,7 @@ public class Professor {
 	
 	
 	public Professor(String newName, String newSurname, Degree newDegree) {
-		setName(newName);
-		setSurname(newSurname);
+		super(newName, newSurname);
 		setDegree(newDegree);
 	}
 }

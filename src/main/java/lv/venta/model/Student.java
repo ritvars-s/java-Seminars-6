@@ -9,11 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,24 +22,13 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @ToString
-public class Student {
+public class Student extends Person{
 	
 	@Setter(value = AccessLevel.NONE) // negrib lai lomboks taisa setteri tiesi id
 	@Column(name= "Sid")
 	@Id //primary key
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long sid;
-	
-	@Column(name = "Name")
-	@NotNull
-	@NotEmpty
-	@Pattern(regexp = "[A-Z]{1}[a-z]{2,20}")//todo var uzlabot
-	private String name;
-	@Column(name = "Surname")
-	@NotNull
-	@NotEmpty
-	@Pattern(regexp = "[A-Z]{1}[a-z]{2,20}")
-	private String surname;
 	
 	
 	//savienots ar grade klasi
@@ -54,8 +39,7 @@ public class Student {
 	
 	
 	public Student(String newName, String newSurname) {
-		setName(newName);
-		setSurname(newSurname);
+		super(newName, newSurname);
 	}
 	
 	
