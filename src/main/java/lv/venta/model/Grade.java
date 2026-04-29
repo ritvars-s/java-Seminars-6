@@ -30,17 +30,17 @@ public class Grade {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long gid;
 	
-	
 	@Column(name = "GrValue")
 	@Min(0)
 	@Max(10)
 	private int grvalue;
+	
 	//sasaiste ar kursu
-	@OneToOne
-	@JoinColumn(name = "Pid")
+	@ManyToOne
+	@JoinColumn(name = "Cid")
 	private Course course;
 	
-	//sasaiste ar studntu
+	//sasaiste ar studentu
 	@ManyToOne
 	@JoinColumn(name = "Sid")
 	private Student student;
@@ -51,8 +51,6 @@ public class Grade {
 		setCourse(newCourse);
 		setStudent(newStudent);
 	}
-	
-	
 	
 	
 	
