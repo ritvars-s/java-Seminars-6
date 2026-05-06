@@ -1,0 +1,19 @@
+<html html xmlns:th="http://www.thymeleaf.org">
+	
+	<body>
+		
+		<table style="width:100%; border-collapse:collapse; font-family:Arial, sans-serif;">
+			<tr th:each="tempP : ${package}">
+			
+				<td th:text="${tempP.name}"></td>
+				<td th:text="${tempP.surname}"></td>
+			
+			</tr>
+		</table>
+		
+		
+	
+		
+	</body>
+
+</html>

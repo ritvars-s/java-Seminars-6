@@ -1,5 +1,7 @@
 package lv.venta.service;
 
+import org.jspecify.annotations.Nullable;
+
 import lv.venta.model.Student;
 
 public interface IStudentCRUDService extends ICRUDServiceBase<Student>{
@@ -11,6 +13,8 @@ public interface IStudentCRUDService extends ICRUDServiceBase<Student>{
 	//U - update by id
 	
 	public abstract void updateById(long id, String newName, String newSurname) throws Exception;
+
+	public abstract @Nullable Object retrieveAll();
 	
 	
 	
