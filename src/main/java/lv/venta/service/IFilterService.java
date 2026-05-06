@@ -1,4 +1,4 @@
-package lv.venta.service.impl;
+package lv.venta.service;
 
 import java.util.ArrayList;
 
@@ -21,7 +21,7 @@ public interface IFilterService {
 	public abstract ArrayList<Grade> filterGradesByStudentNameSurname(String newName, String newSurname) throws Exception;
 	
 	//iegut videjo atzimju vertibu ja ir zinams kursa nosaukums
-	public abstract double calclateAverageGradeByCourseTitle(String newTitle) throws Exception;
+	public abstract float calclateAverageGradeByCourseTitle(String newTitle) throws Exception;
 	
 	
 	//iegut visus studentus kuriem ir kada nesekmiga atzime
