@@ -50,7 +50,7 @@ public class Course {
 	//=======
 	
 	@OneToOne
-	// join coluumn ir ar id no otras klases 
+	// join coluumn ir ar id no otras klases (foreign key)
 	@JoinColumn(name = "Pid")
 	private Professor professor;
 	

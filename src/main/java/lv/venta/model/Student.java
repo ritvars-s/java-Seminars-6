@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Table(name = "StudentTable") //tabula un tas nosaukums
+@Table(name = "StudentTable") //tabula un tas nosaukums // jaaizkomente ja izmanto single table strate'giju
 @Entity
 @Getter
 @Setter
@@ -27,7 +27,7 @@ public class Student extends Person{
 	//savienots ar grade klasi
 	@OneToMany(mappedBy = "student")
 	@ToString.Exclude
-	private Collection<Grade> grades = new ArrayList<Grade>();
+	private Collection<Grade> grades = new ArrayList<>();
 	
 	
 	

@@ -19,7 +19,7 @@ import lombok.Setter;
 import lombok.ToString;
 import lv.venta.model.enums.Degree;
 
-@Table(name = "ProfessorTable")
+@Table(name = "ProfessorTable") // jaaizkomente ja izmanto single table strate'giju
 @Entity
 @Getter
 @Setter
