@@ -33,7 +33,7 @@ public class StudentCRUDController {
 	}
 	
 	@GetMapping("/delete/{id}")//localhost:8080/student/crud/delete/1
-	public String getDeleteStudentById(@PathVariable()) {
+	public String getDeleteStudentById(@PathVariable(name = "id") long id , Model model) {
 		
 		try {
 			studCrudService.deleteByID(id);
