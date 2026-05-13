@@ -1,0 +1,22 @@
+<html html xmlns:th="http://www.thymeleaf.org">
+	
+	<body>
+		
+		<table style="width:100%; border-collapse:collapse; font-family:Arial, sans-serif;">
+			<tr th:each="tempP : ${package}">
+			
+				<td th:text="${tempP.gid}"></td>
+				<td th:text="${tempP.grvalue}"></td>
+				<td th:text="${tempP.student.name}"></td>
+				<td th:text="${tempP.student.surname}"></td>
+				<td th:text="${tempP.course.title}"></td>
+			
+			</tr>
+		</table>
+		
+		
+	
+		
+	</body>
+
+</html>

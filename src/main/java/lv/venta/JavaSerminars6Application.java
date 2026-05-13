@@ -34,11 +34,11 @@ public class JavaSerminars6Application {
 				Student stud2 = new Student("Jariks", "Bobs");
 				studRepo.saveAll(Arrays.asList(stud1,stud2));
 				
-				Professor prof1 = new Professor("Vairis", "Cauna", Degree.phd);
-				Professor prof2 = new Professor("Galina", "HIlkevica", Degree.phd);
+				Professor prof1 = new Professor("Vairis", "Cauna", Degree.unknown);
+				Professor prof2 = new Professor("Galina", "Hilkevica", Degree.phd);
 				profRepo.saveAll(Arrays.asList(prof1,prof2));
 				
-				Course cour1 = new Course("Algoritmu Teorija", 16, prof1);
+				Course cour1 = new Course("Algoritmu teorija", 16, prof1);
 				Course cour2 = new Course("Matematiska analize", 18, prof2);
 				courRepo.saveAll(Arrays.asList(cour1,cour2));
 				

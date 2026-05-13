@@ -2,6 +2,7 @@ package lv.venta.service.impl;
 
 import java.util.ArrayList;
 
+import org.jspecify.annotations.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +22,7 @@ public class StudentCRUDServiceImpl implements IStudentCRUDService {
 	private IGradeRepo gradeRepo;
 	
 	@Override
-	public ArrayList<Student> retriveAll() throws Exception {
+	public ArrayList<Student> retrieveAll() throws Exception {
 		if (studRepo.count() == 0) {
 			throw new Exception("Studentu tabula DB ir tuksa");
 		}
@@ -78,5 +79,8 @@ public class StudentCRUDServiceImpl implements IStudentCRUDService {
 		stud.setSurname(newSurname);
 		studRepo.save(stud);
 	}
+
+	
+	
 
 }

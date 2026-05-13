@@ -40,7 +40,7 @@ public class Course {
 	@Column(name = "Title")
 	@NotNull
 	@NotEmpty
-	@Pattern(regexp = "[A-Z]{1}[A-Za-z0-9]{1,40}")
+	@Pattern(regexp = "[A-Z]{1}[A-Za-z0-9 ]{1,40}")
 	private String title;
 	
 	@Column(name = "CP")

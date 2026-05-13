@@ -3,6 +3,7 @@ package lv.venta.service.impl;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import lv.venta.model.Course;
 import lv.venta.model.Grade;
@@ -15,6 +16,7 @@ import lv.venta.repo.IProfessorRepo;
 import lv.venta.repo.IStudentRepo;
 import lv.venta.service.IFilterService;
 
+@Service
 public class FilterServiceImpl implements IFilterService{
 	
 	@Autowired
