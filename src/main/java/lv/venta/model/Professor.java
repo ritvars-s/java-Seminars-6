@@ -1,5 +1,8 @@
 package lv.venta.model;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -7,6 +10,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
@@ -40,10 +44,9 @@ public class Professor extends Person{
 	private Degree degree;
 	
 	//mapped by ir ar mainigo jasasaista
-	@OneToOne(mappedBy = "professor")
+	@ManyToMany
 	@ToString.Exclude
-	//@JsonIgnore , tad ja izmanto citu orijsgakssustenu pimeram React Vue Angulat Utt.
-	private Course course;
+	private Collection<Course> courses = new ArrayList<>();
 	
 	
 	
@@ -51,4 +54,26 @@ public class Professor extends Person{
 		super(newName, newSurname);
 		setDegree(newDegree);
 	}
+	
+	public void addCourse(Course newCourse)throws Exception {
+		if(newCourse == null) {
+			throw new Exception("Nav pareizi ievades dati");
+		}
+		if(courses.contains(newCourse)) {
+			throw new Exception(newCourse.getTitle() + " jau eksiste profesora panigtaja kursu saraksta");
+		}
+		courses.add(newCourse);
+	}
+	
+	public void removeCourse(Course newCourse)throws Exception {
+		if(newCourse == null) {
+			throw new Exception("Nav pareizi ievades dati");
+		}
+		if(!courses.contains(newCourse)) {
+			throw new Exception(newCourse.getTitle() + "  neeeksiste profesora panigtaja kursu saraksta");
+		}
+		courses.remove(newCourse);
+	}
+	
+	
 }
