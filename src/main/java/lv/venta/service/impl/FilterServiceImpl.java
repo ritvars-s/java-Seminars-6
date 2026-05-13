@@ -59,7 +59,7 @@ public class FilterServiceImpl implements IFilterService{
 			throw new Exception("Profesors ar sadu id neeksiste");
 		}
 		
-		ArrayList<Course> result = courseRepo.findByProfessorPid(id);
+		ArrayList<Course> result = courseRepo.findByProfessorsPid(id);
 		
 		if(result.isEmpty()) {
 			throw new Exception("Tadam profesoram nav neviena kursa");

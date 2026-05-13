@@ -8,7 +8,7 @@ import lv.venta.model.Course;
 
 public interface ICourseRepo extends CrudRepository<Course, Long>{
 
-	ArrayList<Course> findByProfessorPid(long id);
+	ArrayList<Course> findByProfessorsPid(long id);
 
 	boolean existsByTitle(String newTitle);
 

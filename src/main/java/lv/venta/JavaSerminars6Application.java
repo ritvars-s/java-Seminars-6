@@ -32,15 +32,27 @@ public class JavaSerminars6Application {
 			public void run(String... args) throws Exception {
 				Student stud1 = new Student("Juris", "Aborggens");
 				Student stud2 = new Student("Jariks", "Bobs");
-				studRepo.saveAll(Arrays.asList(stud1,stud2));
+				studRepo.saveAll(Arrays.asList(stud1, stud2));
 				
-				Professor prof1 = new Professor("Vairis", "Cauna", Degree.unknown);
+				Professor prof1 = new Professor("Vairis", "Caune", Degree.unknown);
 				Professor prof2 = new Professor("Galina", "Hilkevica", Degree.phd);
-				profRepo.saveAll(Arrays.asList(prof1,prof2));
+				Professor prof3 = new Professor("Jelena", "Mihailova", Degree.other);
+				profRepo.saveAll(Arrays.asList(prof1, prof2, prof3));
 				
 				Course cour1 = new Course("Algoritmu teorija", 16, prof1);
 				Course cour2 = new Course("Matematiska analize", 18, prof2);
-				courRepo.saveAll(Arrays.asList(cour1,cour2));
+				Course cour3 = new Course("Matematiskais trakums", 18, prof2);
+				cour2.addProfessor(prof3);
+				courRepo.saveAll(Arrays.asList(cour1, cour2, cour3));
+				
+				
+				prof1.addCourse(cour1);
+				prof2.addCourse(cour2);
+				prof2.addCourse(cour3);
+				prof3.addCourse(cour2);
+				profRepo.save(prof1);
+				profRepo.save(prof2);
+				profRepo.save(prof3);
 				
 				Grade gr1 = new Grade(6, cour1, stud1);
 				Grade gr2 = new Grade(9, cour2, stud1);
